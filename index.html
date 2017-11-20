@@ -11,26 +11,23 @@
 	<h1>Memory Game</h1>
 </header>
 <nav>
-<a href="#">Instructions</a>
-<a href="#">Game</a>
+<a href="#main">Instructions</a>
+<a href="#game-board">Game</a>
 </nav>
-<main>
+<main id="main">
 <h2>Instructions</h2>
-<p>Concentration, also known as Match Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
+<p>Concentration, also known as Match, Memory, Pelmanism, Shinkei-suijaku, Pexeso or simply Pairs, is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
 <h2>Rules</h2>
 <p>Any deck of playing cards may be used, although there are also commercial sets of cards with images. The rules given here are for a standard deck of 52 cards, which are normally laid face down in four rows of 13 cards each. The two jokers may be included for a total of six rows of nine cards each.</p>
 <p>Additional packs can be used for added interest. Standard rules need not be followed: the cards can be spread out anywhere, such as all around the room on a freshly-vacuumed carpet, again for added interest.</p>
 <p>In turn, each player chooses two cards and turns them face up. If they are of the same rank and color (e.g. six of hearts and six of diamonds, queen of clubs and queen of spades, or both jokers, if used) then that player wins the pair and plays again. If they are not of the same rank and color, they are turned face down again and play passes to the player on the left. Rules can be changed here too: it can be agreed before the game starts that matching pairs be any two cards of the same rank, a color-match being unnecessary, or that the match must be both rank and card suit.</p>
 <p>The game ends when the last pair has been picked up. The winner is the person with the most pairs. There may be a tie for first place.</p>
-<div>
-<img src="images/back.png" alt="Queen of Diamonds">
-<img src="images/back.png" alt="Queen of Hearts">
-<img src="images/back.png" alt="King of Diamonds">
-<img src="images/back.png" alt="King of Hearts">
-</div>
+<label>Game Score: <label id="scoreLabel">0</label></label> 
+<div id="game-board" class="board clearfix"></div>
+<button id="reset">Reset</button>
 <h2>About me</h2>
 <p>My name is Ashok and I've been working as a developer for almost 3 years. Below is a link to my LinkedIn page</p>
-<a href="#">Ashok's LinkedIn</a> <br/>
+<a href="https://www.linkedin.com/in/ashok-b-41b44b116/">Ashok's LinkedIn</a>
 </main>
 <footer class="clearfix">
 	<p class="copyright">Copyright 2017</p>
@@ -38,5 +35,20 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+$(document).ready(function(){
+  $("a").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+      var hash = this.hash; 
+      $('main').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+        window.location.hash = hash;
+      });
+    }
+  });
+}); 
+</script>
 </body>
 </html>
